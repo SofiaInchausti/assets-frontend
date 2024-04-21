@@ -1,0 +1,24 @@
+<section>
+  <div class="container">
+    <h3>Assets</h3><br>
+    <button type="button" class="btn btn-primary float-right" (click)="addAsset()">+ Add Asset</button>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">BRAND</th>
+          <th scope="col">MODEL</th>
+          <th scope="col">TYPE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cursor-pointer" *ngFor="let asset of assets" (click)="editAsset(asset.id)">
+          <th scope="row">{{ asset.id}}</th>
+          <td>{{ asset.brand }}</td>
+          <td>{{ asset.model }}</td>
+          <td>{{ asset.type }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
