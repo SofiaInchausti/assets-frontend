@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, from, tap, throwError } from 'rxjs';
 import { Asset } from '../../app/models/asset/asset';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -40,7 +39,6 @@ export class ApiService {
 
   postAsset(form: Asset): Observable<Response> {
     let completeUrl = this.url + 'assets';
-    +'assets';
-    return this.http.post<any>(completeUrl, form);
+    return this.http.post<Response>(completeUrl, form);
   }
 }
