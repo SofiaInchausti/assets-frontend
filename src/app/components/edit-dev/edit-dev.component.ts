@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../../service/assets/api.assets.service';
 import { Developer } from '../../models/developer/developer';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService as ApiServiceDev } from '../../../service/developers/api.developers.service';
 import { Asset } from '../../models/asset/asset';
+import { AlertService } from '../../../service/alerts.service';
 
 @Component({
   selector: 'app-edit-dev',
@@ -20,12 +21,13 @@ export class EditDevComponent {
     private apiDev: ApiServiceDev,
     private router: Router,
     private api: ApiService,
-    private activerouter: ActivatedRoute
+    private activerouter: ActivatedRoute,
+    private alerts: AlertService
   ) {}
 
   editForm = new FormGroup({
-    fullname: new FormControl(''),
-    active: new FormControl(false),
+    fullname: new FormControl('' ,Validators.required),
+    active: new FormControl(false, Validators.required),
     assets: new FormControl(),
   });
 
@@ -69,10 +71,10 @@ export class EditDevComponent {
     form.id = this.activerouter.snapshot.paramMap.get('id');
     this.apiDev.putDeveloper(form).subscribe({
       error: (error: any) => {
-        console.log(error);
+        this.alerts.showError(error,'Error');
       },
       complete: () => {
-        console.log('Update request completed');
+        this.alerts.showSuccess('Update request completed','Done');
         this.router.navigate(['dashboard']);
       },
     });
@@ -83,10 +85,10 @@ export class EditDevComponent {
     if (devId) {
       this.apiDev.deleteDeveloper(devId).subscribe({
         error: (error: any) => {
-          console.log(error);
+          this.alerts.showError(error,'Error');
         },
         complete: () => {
-          console.log('Deletion request completed');
+          this.alerts.showSuccess('Deletion request completed','Done');
           this.router.navigate(['dashboard']);
         },
       });
@@ -95,5 +97,9 @@ export class EditDevComponent {
 
   exit() {
     this.router.navigate(['dashboard']);
+  }
+
+  isFormValid(): boolean {
+    return this.editForm.valid;
   }
 }

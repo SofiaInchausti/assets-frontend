@@ -14,7 +14,7 @@
         formControlName="active">
       <label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
     </div>
-    <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Save</button>
+    <button type="submit" [disabled]="!isFormValid()" class="btn btn-primary" style="margin-right: 10px;">Save</button>
     <button type="button" class="btn btn-danger" style="margin-right: 10px;" (click)="delete()">Delete</button>
     <button type="button" class="btn btn-dark" (click)="exit()">Exit</button>
   </form>
