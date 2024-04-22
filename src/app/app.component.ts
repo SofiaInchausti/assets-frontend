@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Asset, AssetType } from './models/asset/asset';
 
 @Component({
   selector: 'app-root',
