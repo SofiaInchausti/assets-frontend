@@ -7,8 +7,11 @@ import { NewDevComponent } from './components/new-dev/new-dev.component';
 import { EditDevComponent } from './components/edit-dev/edit-dev.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
+  { path:'' , redirectTo:'login' , pathMatch:'full'},
+  { path:'login', component:LoginComponent },
   { path:'dashboard', component:DashboardComponent },
   { path:'new', component: NewComponent },
   { path:'edit/:id', component:EditComponent },
@@ -23,4 +26,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [DashboardComponent,NewComponent,EditComponent, NewDevComponent, EditDevComponent, NewUserComponent, EditUserComponent]
+export const routingComponents = [DashboardComponent,NewComponent,EditComponent, NewDevComponent, EditDevComponent, NewUserComponent, EditUserComponent, LoginComponent]
