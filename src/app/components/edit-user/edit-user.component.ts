@@ -2,27 +2,28 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../../service/users/api.users.service';
 import { User } from '../../models/user/user';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from '../../../service/alerts.service';
 
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrl: './edit-user.component.css'
+  styleUrl: './edit-user.component.css',
 })
 export class EditUserComponent {
-
   userData: User;
 
   constructor(
     private apiUser: ApiService,
     private router: Router,
-    private activerouter: ActivatedRoute
+    private activerouter: ActivatedRoute,
+    private alerts: AlertService
   ) {}
 
   editForm = new FormGroup({
-    username: new FormControl(' '),
+    username: new FormControl(' ', Validators.required),
     active: new FormControl(false),
-    password: new FormControl(),
+    password: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class EditUserComponent {
       this.editForm.patchValue({
         username: this.userData?.username || '',
         active: this.userData?.active!,
-        password: this.userData?.password
+        password: this.userData?.password,
       });
     });
   }
@@ -43,10 +44,10 @@ export class EditUserComponent {
     form.id = this.activerouter.snapshot.paramMap.get('id');
     this.apiUser.putUser(form).subscribe({
       error: (error: any) => {
-        console.log(error);
+        this.alerts.showError(error, 'Error');
       },
       complete: () => {
-        console.log('Update request completed');
+        this.alerts.showSuccess('Update request completed', 'Done');
         this.router.navigate(['dashboard']);
       },
     });
@@ -57,10 +58,10 @@ export class EditUserComponent {
     if (userId) {
       this.apiUser.deleteUser(userId).subscribe({
         error: (error: any) => {
-          console.log(error);
+          this.alerts.showError(error, 'Error');
         },
         complete: () => {
-          console.log('Deletion request completed');
+          this.alerts.showSuccess('Deletion request completed', 'Done');
           this.router.navigate(['dashboard']);
         },
       });
@@ -70,5 +71,8 @@ export class EditUserComponent {
   exit() {
     this.router.navigate(['dashboard']);
   }
-}
 
+  isFormValid(): boolean {
+    return this.editForm.valid;
+  }
+}
