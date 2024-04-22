@@ -1,5 +1,6 @@
 export class Developer {
-  id!: number;
-  fullname!: string;
-  active: boolean | undefined;
+  id?: string | null;
+  fullname?: string | null;
+  active?: boolean | null;
+  assets?: any;
 }
