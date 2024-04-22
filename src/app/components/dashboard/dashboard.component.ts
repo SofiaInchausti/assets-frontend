@@ -5,6 +5,7 @@ import { Asset } from '../../models/asset/asset';
 import { Router } from '@angular/router';
 import { Developer } from '../../models/developer/developer';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -29,7 +30,6 @@ export class DashboardComponent implements OnInit {
 
   getAssetById(assetId: number): Asset | undefined {
     const data = this.assets.find((asset) => asset.id === assetId);
-    console.log(data);
     return data;
   }
 
