@@ -33,7 +33,7 @@ export class NewUserComponent implements OnInit {
   addNewUser(form: any) {
     this.apiUser.postUser(form).subscribe({
       error: (error: any) => {
-        this.alerts.showError(error, 'Error');
+        this.alerts.showError(error.error.message, 'Error');
       },
       complete: () => {
         this.alerts.showSuccess('User created', 'Done');

@@ -47,8 +47,7 @@ export class NewDevComponent implements OnInit {
   addNewDeveloper(form: any) {
     this.apiDev.postDeveloper(form).subscribe({
       error: (error: any) => {
-        console.log(error)
-        this.alerts.showError(error.message, 'Error');
+        this.alerts.showError(error.error.message, 'Error');
       },
       complete: () => {
         this.alerts.showSuccess('Developer created', 'Done');

@@ -44,7 +44,7 @@ export class EditComponent {
     form.id = this.activerouter.snapshot.paramMap.get('id');
     this.api.putAsset(form).subscribe({
       error: (error) => {
-        this.alerts.showError(error,'Error');
+        this.alerts.showError(error.error.message,'Error');
       },
       complete: () => {
         this.alerts.showSuccess('Update request completed','Done');
@@ -58,7 +58,7 @@ export class EditComponent {
     if (assetId) {
       this.api.deleteAsset(assetId).subscribe({
         error: (error) => {
-          this.alerts.showError(error,'Error');
+          this.alerts.showError(error.error.message,'Error');
         },
         complete: () => {
           this.alerts.showSuccess('Deletion request completed','Done');

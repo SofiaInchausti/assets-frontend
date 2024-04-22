@@ -71,7 +71,7 @@ export class EditDevComponent {
     form.id = this.activerouter.snapshot.paramMap.get('id');
     this.apiDev.putDeveloper(form).subscribe({
       error: (error: any) => {
-        this.alerts.showError(error,'Error');
+        this.alerts.showError(error.error.message,'Error');
       },
       complete: () => {
         this.alerts.showSuccess('Update request completed','Done');
@@ -85,7 +85,7 @@ export class EditDevComponent {
     if (devId) {
       this.apiDev.deleteDeveloper(devId).subscribe({
         error: (error: any) => {
-          this.alerts.showError(error,'Error');
+          this.alerts.showError(error.error.message,'Error');
         },
         complete: () => {
           this.alerts.showSuccess('Deletion request completed','Done');
