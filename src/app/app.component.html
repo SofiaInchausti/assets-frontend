@@ -1,5 +1,22 @@
-<nav>Navbar</nav>
-<router-outlet></router-outlet>
-
-<footer>footer</footer>
-
+<!-- Nav -->
+<div class="d-flex flex-column" style="min-height: 100vh;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #343a40; color: white;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color: white;">AssetTracker</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+<!-- Components -->
+  <div class="d-flex align-items-center justify-content-center flex-grow-1" style="background-color: #343a40;">
+    <router-outlet></router-outlet>
+  </div>
+<!-- Footer -->
+  <footer class="footer py-3 text-center" style="background-color: #343a40; color: white; position: fixed; bottom: 0; width: 100%;">
+    <div class="container">
+      <span>Made with ❤️ by Sofia Inchausti | <a href="https://github.com/SofiaInchausti" target="_blank" style="color: white;">GitHub Repo</a></span>
+    </div>
+  </footer>
+</div>
