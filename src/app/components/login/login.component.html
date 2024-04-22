@@ -1,23 +1,26 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card mt-5">
-        <div class="card-body">
-          <h4 class="card-title text-center mb-4">Log in</h4>
-          <form [formGroup]="form" (ngSubmit)="onLogin(form.value)">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Username" formControlName="username">
+<section
+  style="background-color: #343a40; color: white; height: 100vh; display: flex; align-items: center; justify-content: center;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="">
+        <div class="card mt-5" style="width: 500px; padding: 40px 10px;">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-4">Log in</h4>
+            <form class="d-flex justify-content-center flex-column" [formGroup]="form" (ngSubmit)="onLogin(form.value)">
+              <div class="form-group mb-3">
+                <input type="text" class="form-control" placeholder="Username" formControlName="username">
+              </div>
+              <div class="form-group mb-4">
+                <input type="password" class="form-control" placeholder="Password" formControlName="password">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </form>
+            <div class="alert alert-danger mt-3" *ngIf="errorStatus">
+              <p>{{ errorMsj }}</p>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Log in</button>
-          </form>
-          <div class="alert alert-danger mt-3" *ngIf="errorStatus">
-            <p>{{ errorMsj }}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>

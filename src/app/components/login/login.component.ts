@@ -38,8 +38,13 @@ export class LoginComponent implements OnInit {
       },
       error: (error: any) => {
         console.error('Error al iniciar sesión:', error);
-        this.errorStatus = true;
-        this.errorMsj = error.msg;
+        if (error.status === 404) {
+          this.errorStatus = true;
+          this.errorMsj = 'Username and password are required.';
+        } else {
+          this.errorStatus = true;
+          this.errorMsj = 'An error occurred while logging in.';
+        }
       },
     });
   }

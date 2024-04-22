@@ -1,16 +1,17 @@
-<div class="container">
-  <form [formGroup]="form" (ngSubmit)="addNewAsset(form.value)">
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Brand</label>
+<div
+  style="width:600px; padding:60px; border-radius: 20px; background-color: #f8f9fa; padding-top: 20px; margin-top:50px;">
+  <form style="padding-top: 30px;" [formGroup]="form" (ngSubmit)="addNewAsset(form.value)">
+    <div class="form-group" class="pb-3">
+      <label for="exampleFormControlInput1" class="pb-2">Brand</label>
       <input type="text" class="form-control" placeholder="Asset Brand" formControlName="brand">
     </div>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Model</label>
+    <div class="form-group" class="pb-3">
+      <label for="exampleFormControlInput1" class="pb-2">Model</label>
       <input type="text" class="form-control" placeholder="Model" formControlName="model">
     </div>
-    <div class="form-group row">
+    <div class="form-group row" class="pb-3">
       <div class="col">
-        <label for="exampleFormControlSelect1">Type</label>
+        <label for="exampleFormControlSelect1" class="pb-2">Type</label>
         <select class="form-control" id="exampleFormControlSelect1" formControlName="type">
           <option value="laptop">Laptop</option>
           <option value="keyboard">Keyboard</option>
@@ -21,7 +22,7 @@
       </div>
     </div>
     <br><br>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary" style="margin-right:10px;">Save</button>
     <button type="button" class="btn btn-dark" (click)="exit()">Exit</button>
   </form>
 </div>
