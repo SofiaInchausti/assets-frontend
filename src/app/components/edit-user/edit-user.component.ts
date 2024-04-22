@@ -44,7 +44,7 @@ export class EditUserComponent {
     form.id = this.activerouter.snapshot.paramMap.get('id');
     this.apiUser.putUser(form).subscribe({
       error: (error: any) => {
-        this.alerts.showError(error, 'Error');
+        this.alerts.showError(error.error.message, 'Error');
       },
       complete: () => {
         this.alerts.showSuccess('Update request completed', 'Done');
@@ -58,7 +58,7 @@ export class EditUserComponent {
     if (userId) {
       this.apiUser.deleteUser(userId).subscribe({
         error: (error: any) => {
-          this.alerts.showError(error, 'Error');
+          this.alerts.showError(error.error.message, 'Error');
         },
         complete: () => {
           this.alerts.showSuccess('Deletion request completed', 'Done');

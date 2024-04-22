@@ -26,7 +26,7 @@ export class NewComponent {
   addNewAsset(form: Asset) {
     this.api.postAsset(form).subscribe({
       error: (error: any) => {
-        this.alerts.showError(error, 'Error');
+        this.alerts.showError(error.error.message, 'Error');
       },
       complete: () => {
         this.alerts.showSuccess('Asset created', 'Done');
