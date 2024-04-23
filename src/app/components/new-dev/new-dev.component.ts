@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService as ApiServiceDev } from '../../../service/developers/api.developers.service';
 import { ApiService } from '../../../service/assets/api.assets.service';
 import { Router } from '@angular/router';
 import { Asset } from '../../models/asset/asset';
+import { AlertService } from '../../../service/alerts.service';
 
 @Component({
   selector: 'app-new-dev',
@@ -16,15 +17,16 @@ export class NewDevComponent implements OnInit {
   selectedAssets: any;
 
   form = new FormGroup({
-    fullname: new FormControl(''),
+    fullname: new FormControl('', Validators.required),
     active: new FormControl(true),
-    assets: new FormControl(), // Inicializa como un array vacío
+    assets: new FormControl(),
   });
 
   constructor(
     private api: ApiService,
     private apiDev: ApiServiceDev,
-    private router: Router
+    private router: Router,
+    private alerts: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -43,10 +45,22 @@ export class NewDevComponent implements OnInit {
   }
 
   addNewDeveloper(form: any) {
-    this.apiDev.postDeveloper(form).subscribe((data: any) => {});
+    this.apiDev.postDeveloper(form).subscribe({
+      error: (error: any) => {
+        this.alerts.showError(error.error.message, 'Error');
+      },
+      complete: () => {
+        this.alerts.showSuccess('Developer created', 'Done');
+        this.router.navigate(['dashboard']);
+      },
+    });
   }
 
   exit() {
     this.router.navigate(['dashboard']);
+  }
+
+  isFormValid(): boolean {
+    return this.form.valid;
   }
 }

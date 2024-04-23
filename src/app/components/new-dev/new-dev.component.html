@@ -1,12 +1,13 @@
-<div class="container">
-  <form [formGroup]="form" (ngSubmit)="addNewDeveloper(form.value)">
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Fullname</label>
+<div
+  style="width:600px; padding:60px; border-radius: 20px; background-color: #f8f9fa; padding-top: 20px; margin-top:50px;">
+  <form style="padding-top: 30px;" [formGroup]="form" (ngSubmit)="addNewDeveloper(form.value)">
+    <div class="form-group" class="pb-3">
+      <label for="exampleFormControlInput1" class="pb-2">Fullname</label>
       <input type="text" class="form-control" placeholder="Username" formControlName="fullname">
     </div>
-    <div class="form-group row">
+    <div class="form-group row" class="pb-3">
       <div class="col">
-        <label for="exampleFormControlSelect1">Assets</label>
+        <label for="exampleFormControlSelect1" class="pb-2">Assets</label>
         <select class="form-control" id="exampleFormControlSelect1" formControlName="assets" multiple
           (change)="onAssetsChange($event)">
           <option *ngFor="let asset of assetsData" [value]="asset.id">{{ asset.brand }} {{ asset.type }} Model:
@@ -20,8 +21,7 @@
       <label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
     </div>
     <br><br>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" [disabled]="!isFormValid()" class="btn btn-primary" style="margin-right: 10px;">Save</button>
     <button type="button" class="btn btn-dark" (click)="exit()">Exit</button>
   </form>
 </div>
-
