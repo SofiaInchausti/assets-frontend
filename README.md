@@ -26,7 +26,7 @@ The project can be installed and run in two different ways: using npm directly o
 <h4>Installation with npm</h4>
 
 Clone the repository:
-git clone <REPOSITORY_URL>
+git clone https://github.com/SofiaInchausti/assets-frontend
 Navigate to the project directory:
 cd project_name
 Install dependencies:
@@ -38,14 +38,15 @@ This will start the backend server and frontend in development mode.
 <h4>Installation with Docker</h4>
 
 Clone the repository:
-git clone <REPOSITORY_URL>
+git clone https://github.com/SofiaInchausti/assets-frontend
 Navigate to the project directory:
 cd project_name
 Build the Docker image:
 docker build -t image_name .
 Run the container:
-docker run -p 3000:3000 image_name
-This will start the Docker container and run the application on port 3000.
+docker run -d -it -p 80:80/image_name
+This will start the Docker container and run the application on port 80.
+__To access the login functionality, navigate directly to the http://localhost:80/dashboard. From there, you can create a user account. Once the user account is created, you can proceed to log in.__
 
 <h3>Usage :computer:</h3>
 Once the application is installed and running, you can access it from your web browser by visiting http://localhost:4200 (or the port where the application is configured).
