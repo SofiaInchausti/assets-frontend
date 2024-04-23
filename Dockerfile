@@ -1,14 +1,21 @@
-FROM node:lts-bullseye as build
-WORKDIR /app
+# Stage 1: Build
+FROM node:18-alpine AS build
+
+WORKDIR /usr/src/app
+
 COPY package*.json ./
-RUN npm ci
+
+RUN npm install
+
 COPY . .
-RUN npm run build
 
-##step 2
-FROM nginx:alpine
-ADD ./config/default.conf /etc/nginx/config.d/default.conf
-COPY --from=build /app/dist /var/wwww/app
+RUN npm run build --prod
+
+# Stage 2
+FROM nginx:1.17.1-alpine
+
+COPY --from=build /usr/src/app/dist/frontend/browser /usr/share/nginx/html
+
+COPY --from=build /usr/src/app/nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
-CMD [ "nginx","-g","daemon offf;" ]
-
