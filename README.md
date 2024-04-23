@@ -48,4 +48,4 @@ docker run -p 3000:3000 image_name
 This will start the Docker container and run the application on port 3000.
 
 <h3>Usage :computer:</h3>
-Once the application is installed and running, you can access it from your web browser by visiting http://localhost:3000 (or the port where the application is configured).
+Once the application is installed and running, you can access it from your web browser by visiting http://localhost:4200 (or the port where the application is configured).
