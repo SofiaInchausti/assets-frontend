@@ -49,3 +49,8 @@ This will start the Docker container and run the application on port 3000.
 
 <h3>Usage :computer:</h3>
 Once the application is installed and running, you can access it from your web browser by visiting http://localhost:4200 (or the port where the application is configured).
+
+<h3>Technologies Used</h3>
+<h4>Angular</h4>
+<h4>Bootstrap</h4>
+<h4>Typescript</h4>
