@@ -26,7 +26,7 @@ The project can be installed and run in two different ways: using npm directly o
 <h4>Installation with npm</h4>
 
 Clone the repository:
-git clone https://github.com/SofiaInchausti/assets-frontend
+git clone <https://github.com/SofiaInchausti/assets-frontend>
 Navigate to the project directory:
 cd project_name
 Install dependencies:
@@ -38,7 +38,7 @@ This will start the backend server and frontend in development mode.
 <h4>Installation with Docker</h4>
 
 Clone the repository:
-git clone https://github.com/SofiaInchausti/assets-frontend
+git clone <https://github.com/SofiaInchausti/assets-frontend>
 Navigate to the project directory:
 cd project_name
 Build the Docker image:
